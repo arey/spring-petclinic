@@ -36,7 +36,20 @@
     <nohttp-checkstyle.version>0.0.11</nohttp-checkstyle.version>
     <spring-format.version>0.0.43</spring-format.version>
 
+    <spring-ai.version>1.0.0-M2</spring-ai.version>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.ai</groupId>
+        <artifactId>spring-ai-bom</artifactId>
+        <version>${spring-ai.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <!-- Spring and Spring Boot dependencies -->
@@ -442,6 +455,18 @@
           </plugins>
         </pluginManagement>
       </build>
+    </profile>
+    <profile>
+      <id>azure-openai</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>org.springframework.ai</groupId>
+          <artifactId>spring-ai-azure-openai-spring-boot-starter</artifactId>
+        </dependency>
+      </dependencies>
     </profile>
   </profiles>
 
