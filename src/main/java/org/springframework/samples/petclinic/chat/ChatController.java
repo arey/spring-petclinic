@@ -19,13 +19,13 @@ class ChatController {
 	}
 
 	@PostMapping("/chat")
-	public String chat(@RequestBody String message) {
-		LOGGER.debug("Chat {}", message);
+	public String chat(@RequestBody String query) {
+		LOGGER.debug("Chat {}", query);
 		try {
 			return chatClient
 				.prompt()
-				.user(message)
-				.call()
+					.user(query)
+					.call()
 				.content();
 		} catch (RuntimeException exception) {
 			LOGGER.error("Technical error while calling chat client", exception);
