@@ -1,5 +1,7 @@
 package org.springframework.samples.petclinic.chat;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 class ChatController {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(ChatController.class);
 
 	private ChatClient chatClient;
 
@@ -16,6 +20,7 @@ class ChatController {
 
 	@PostMapping("/chat")
 	public String chat(@RequestBody String message) {
+		LOGGER.debug("Chat {}", message);
 		return chatClient
 			.prompt()
 				.user(message)
