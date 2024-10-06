@@ -21,10 +21,15 @@ class ChatController {
 	@PostMapping("/chat")
 	public String chat(@RequestBody String message) {
 		LOGGER.debug("Chat {}", message);
-		return chatClient
-			.prompt()
+		try {
+			return chatClient
+				.prompt()
 				.user(message)
-			.call()
-			.content();
+				.call()
+				.content();
+		} catch (RuntimeException exception) {
+			LOGGER.error("Technical error while calling chat client", exception);
+			return "Sorry, I am not able to help you with that.";
+		}
 	}
 }
