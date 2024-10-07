@@ -25,6 +25,7 @@ class ChatConfig {
 				new PromptChatMemoryAdvisor(chatMemory)
 			)
 			.defaultSystem(systemResource)
+			.defaultFunctions("queryOwners")
 			.build();
 		// @formatter:on
 	}
