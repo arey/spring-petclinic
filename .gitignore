@@ -43,5 +43,3 @@ out/
 
 ### CSS ###
 _site/
-*.css
-!petclinic.css
