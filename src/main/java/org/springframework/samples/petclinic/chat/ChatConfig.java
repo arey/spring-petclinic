@@ -25,7 +25,7 @@ class ChatConfig {
 				new PromptChatMemoryAdvisor(chatMemory)
 			)
 			.defaultSystem(systemResource)
-			.defaultFunctions("queryOwners")
+			.defaultFunctions("queryOwners", "addPetToOwner")
 			.build();
 		// @formatter:on
 	}

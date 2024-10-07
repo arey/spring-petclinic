@@ -6,6 +6,8 @@ function appendMessage(message, type) {
     messageElement.classList.add('chat-bubble', type);
 
     // Convert Markdown to HTML
+    // May interpret bullet syntax like
+    // 1. **Betty Davis**
     const htmlContent = marked.parse(message);
     messageElement.innerHTML = htmlContent;
 
