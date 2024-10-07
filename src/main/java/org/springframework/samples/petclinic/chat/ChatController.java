@@ -22,14 +22,18 @@ class ChatController {
 	public String chat(@RequestBody String query) {
 		LOGGER.debug("Chat {}", query);
 		try {
+			// @formatter:off
 			return chatClient
 				.prompt()
 					.user(query)
 					.call()
 				.content();
-		} catch (RuntimeException exception) {
+			// @formatter:on
+		}
+		catch (RuntimeException exception) {
 			LOGGER.error("Technical error while calling chat client", exception);
 			return "Sorry, I am not able to help you with that.";
 		}
 	}
+
 }

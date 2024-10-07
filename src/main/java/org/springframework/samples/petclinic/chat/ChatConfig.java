@@ -15,8 +15,10 @@ class ChatConfig {
 
 	@Value("classpath:/prompts/system.st")
 	private Resource systemResource;
+
 	@Bean
 	ChatClient chatClient(ChatClient.Builder chatClientBuilder, ChatMemory chatMemory) {
+		// @formatter:off
 		return chatClientBuilder
 			.defaultAdvisors(
 				new SimpleLoggerAdvisor(),
@@ -24,10 +26,12 @@ class ChatConfig {
 			)
 			.defaultSystem(systemResource)
 			.build();
+		// @formatter:on
 	}
 
 	@Bean
 	ChatMemory chatMemory() {
 		return new InMemoryChatMemory();
 	}
+
 }
