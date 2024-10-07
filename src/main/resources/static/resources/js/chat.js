@@ -5,7 +5,9 @@ function appendMessage(message, type) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('chat-bubble', type);
 
-    messageElement.innerHTML = message;
+    // Convert Markdown to HTML
+    const htmlContent = marked.parse(message);
+    messageElement.innerHTML = htmlContent;
 
     chatMessages.appendChild(messageElement);
 
